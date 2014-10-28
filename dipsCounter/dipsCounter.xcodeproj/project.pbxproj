@@ -14,6 +14,7 @@
 		D92A80641A001AC1005343C0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92A80631A001AC1005343C0 /* Images.xcassets */; };
 		D92A80671A001AC1005343C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D92A80651A001AC1005343C0 /* LaunchScreen.xib */; };
 		D92A80731A001AC1005343C0 /* dipsCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A80721A001AC1005343C0 /* dipsCounterTests.m */; };
+		D92A807E1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A807D1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		D92A806C1A001AC1005343C0 /* dipsCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dipsCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92A80711A001AC1005343C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D92A80721A001AC1005343C0 /* dipsCounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dipsCounterTests.m; sourceTree = "<group>"; };
+		D92A807C1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CMDeviceMotion+FullAcceleration.h"; path = "Categories/CMDeviceMotion+FullAcceleration.h"; sourceTree = "<group>"; };
+		D92A807D1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CMDeviceMotion+FullAcceleration.m"; path = "Categories/CMDeviceMotion+FullAcceleration.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 				D92A80631A001AC1005343C0 /* Images.xcassets */,
 				D92A80651A001AC1005343C0 /* LaunchScreen.xib */,
 				D92A80561A001AC1005343C0 /* Supporting Files */,
+				D92A807F1A002B56005343C0 /* Categories */,
 			);
 			path = dipsCounter;
 			sourceTree = "<group>";
@@ -117,6 +121,15 @@
 				D92A80711A001AC1005343C0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D92A807F1A002B56005343C0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D92A807C1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.h */,
+				D92A807D1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +181,7 @@
 				TargetAttributes = {
 					D92A80521A001AC1005343C0 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 52MC3473D3;
 					};
 					D92A806B1A001AC1005343C0 = {
 						CreatedOnToolsVersion = 6.1;
@@ -221,6 +235,7 @@
 			files = (
 				D92A805F1A001AC1005343C0 /* ViewController.m in Sources */,
 				D92A805C1A001AC1005343C0 /* AppDelegate.m in Sources */,
+				D92A807E1A002B43005343C0 /* CMDeviceMotion+FullAcceleration.m in Sources */,
 				D92A80591A001AC1005343C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +360,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = dipsCounter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,7 +372,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = dipsCounter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

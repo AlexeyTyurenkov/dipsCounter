@@ -8,7 +8,12 @@
 
 #import "ViewController.h"
 
+static const float kAccelerometerFrequency = 1/50.0f; //Hz
+
 @interface ViewController ()
+
+@property (nonatomic, strong) CMMotionManager *motionManager;
+@property (weak, nonatomic) IBOutlet UILabel *centerLabel;
 
 @end
 
@@ -16,12 +21,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self startCount];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Configuring the accelerometer
+
+-(CMMotionManager *)motionManager
+{
+    
+    if (!_motionManager)
+    {
+        _motionManager = [[CMMotionManager alloc] init];
+        _motionManager.deviceMotionUpdateInterval = kAccelerometerFrequency;
+    }
+    
+    return _motionManager;
+}
+
+- (void) startCount
+{
+    __weak UILabel* motionLabel = self.centerLabel;
+        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                motionLabel.text = [NSString stringWithFormat:@"%f",[motion fullAcceleration]];
+            });
+        }];
+}
 @end
