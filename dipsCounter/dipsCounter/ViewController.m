@@ -47,7 +47,9 @@ static const float kAccelerometerFrequency = 1/50.0f; //Hz
     __weak UILabel* motionLabel = self.centerLabel;
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 motionLabel.text = [NSString stringWithFormat:@"%f",[motion fullAcceleration]];
+                NSLog(@"%@",motionLabel.text);
             });
         }];
 }
