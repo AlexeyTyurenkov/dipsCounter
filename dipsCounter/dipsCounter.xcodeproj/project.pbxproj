@@ -433,6 +433,7 @@
 				D92A80781A001AC1005343C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D92A80791A001AC1005343C0 /* Build configuration list for PBXNativeTarget "dipsCounterTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +442,7 @@
 				D92A807B1A001AC1005343C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

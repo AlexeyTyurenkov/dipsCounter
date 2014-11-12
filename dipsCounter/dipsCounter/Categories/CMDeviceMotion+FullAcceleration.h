@@ -10,4 +10,5 @@
 
 @interface CMDeviceMotion (FullAcceleration)
 - (float)fullAcceleration;
+- (float)verticalAcceleration;
 @end

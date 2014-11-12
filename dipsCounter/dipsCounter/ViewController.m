@@ -8,13 +8,14 @@
 
 #import "ViewController.h"
 
-static const float kAccelerometerFrequency = 1/50.0f; //Hz
+static const float kAccelerometerFrequency = 1/10.0f; //Hz
 
 @interface ViewController ()
 
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (weak, nonatomic) IBOutlet UILabel *centerLabel;
-
+@property (nonatomic,assign) float velocity;
+@property (nonatomic, assign) float distance;
 @end
 
 @implementation ViewController
@@ -44,13 +45,20 @@ static const float kAccelerometerFrequency = 1/50.0f; //Hz
 
 - (void) startCount
 {
-    __weak UILabel* motionLabel = self.centerLabel;
-        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                motionLabel.text = [NSString stringWithFormat:@"%f",[motion fullAcceleration]];
-                NSLog(@"%@",motionLabel.text);
-            });
-        }];
+
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    __weak ViewController* weakSelf = self;
+    [self.motionManager startDeviceMotionUpdatesToQueue:queue withHandler:^(CMDeviceMotion *motion, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            float acceleration = [motion verticalAcceleration];
+            weakSelf.distance += weakSelf.velocity* kAccelerometerFrequency + acceleration*kAccelerometerFrequency*kAccelerometerFrequency / 2;
+            weakSelf.velocity += acceleration * kAccelerometerFrequency;
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                weakSelf.centerLabel.text = [NSString stringWithFormat:@"%f",weakSelf.distance];
+            }];
+
+        });
+    }];
+
 }
 @end
